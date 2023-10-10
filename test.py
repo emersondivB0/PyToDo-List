@@ -1,5 +1,7 @@
 from PyQt5 import QtWidgets
-from PyQt5.QtWidgets import (QMainWindow, QWidget, QPushButton, QApplication, QHBoxLayout, QVBoxLayout, QGridLayout)
+from PyQt5.QtWidgets import (QMainWindow, QWidget, QPushButton, 
+                             QApplication, QHBoxLayout, QVBoxLayout, 
+                             QGridLayout)
 import sys
 
 
