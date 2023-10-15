@@ -9,7 +9,7 @@ from PyQt5.QtWidgets import QApplication, QMainWindow, QMessageBox
 
 class Communication:
     def __init__(self):
-        self.connection = sqlite3.connect("todo_list_py.db")
+        self.connection = sqlite3.connect('todo_list_py.db')
         # Creación de la tabla
         self.connection.execute(
             """CREATE TABLE IF NOT EXISTS tasks
@@ -24,12 +24,12 @@ class Communication:
     def add_task(self, name, description, end_date, finished):
         cursor = self.connection.cursor()
         try:
-            end_date = datetime.strptime(end_date, "%d/%m/%Y").date()
+            end_date = datetime.strptime(end_date, '%d/%m/%Y').date()
         except ValueError:
             error_msg = QMessageBox()
             error_msg.setIcon(QMessageBox.Critical)
-            error_msg.setWindowTitle("Error")
-            error_msg.setText("Wrong date format (DD/MM/AAAA)")
+            error_msg.setWindowTitle('Error')
+            error_msg.setText('Wrong date format (DD/MM/AAAA)')
             error_msg.exec_()
             return
         query = """INSERT INTO tasks (NAME, DESCRIPTION, END_DATE, FINISHED) 
@@ -42,7 +42,7 @@ class Communication:
 
     def show_tasks(self):
         cursor = self.connection.cursor()
-        query = "SELECT * FROM tasks"
+        query = 'SELECT * FROM tasks'
         cursor.execute(query)
         tasks = cursor.fetchall()
         cursor.close()
