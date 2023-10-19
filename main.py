@@ -57,108 +57,145 @@ class VentanaPrincipal(QMainWindow):
             QHeaderView.Stretch
         )
 
-        # Sizegrp :
-        def resizeEvent(self, event):
-            rect = self.rect()
-            self.grip.move(
-                rect.right() - self.gripSize, rect.bottom() - self.gripSize
-            )
+    # Sizegrp :
+    def resizeEvent(self, event):
+        rect = self.rect()
+        self.grip.move(
+            rect.right() - self.gripSize, rect.bottom() - self.gripSize
+        )
 
-        def mousePressEvent(self, event):
-            self.click_position = event.globalPos()
+    def mousePressEvent(self, event):
+        self.click_position = event.globalPos()
 
-        def move_window(self, event):
-            if self.isMaximized() is False:
-                if event.buttons() == QtCore.Qt.LeftButton:
-                    self.move(
-                        self.pos() + event.globalPos() - self.click_position
-                    )
-                    self.click_position = event.globalPos()
-                    event.accept()
+    def move_window(self, event):
+        if self.isMaximized() is False:
+            if event.buttons() == QtCore.Qt.LeftButton:
+                self.move(self.pos() + event.globalPos() - self.click_position)
+                self.click_position = event.globalPos()
+                event.accept()
 
-        # Resize menu Column
-        def mover_menu(self):
-            if True:
-                width = self.frame_control.width()
-                normal = 0
-                if width == 0:
-                    extender = 200
-                else:
-                    extender = normal
-                self.animation = QPropertyAnimation(
-                    self.frame_control, b'minimumWidth'
-                )
-                self.animation.setDuration(300)
-                self.animation.setStartValue(width)
-                self.animation.setEndValue(extender)
-                self.animation.setEasingCurve(QtCore.QEasingCurve.InOutQuart)
-                self.animation.start()
-
-        # Database page
-        def show_tasks(self):
-            datos = self.base_datos.show_tasks()
-            i = len(datos)
-            self.table_tasks.setRowCount(i)
-            tablerow = 0
-            for row in datos:
-                self.Id = row[0]
-                self.table_tasks.setItem(
-                    tablerow, 0, QtWidgets.QTableWidgetItem(row[1])
-                )
-                self.table_tasks.setItem(
-                    tablerow, 1, QtWidgets.QTableWidgetItem(row[2])
-                )
-                self.table_tasks.setItem(
-                    tablerow, 2, QtWidgets.QTableWidgetItem(row[3])
-                )
-                self.table_tasks.setItem(
-                    tablerow, 3, QtWidgets.QTableWidgetItem(row[4])
-                )
-                tablerow += 1
-                self.signal_list.setText('')
-                self.signal_delete.setText('')
-                self.signal_edit.setText('')
-                self.signal_add.setText('')
-
-        def add_task(self):
-            name = self.add_name.text().upper()
-            description = self.add_description.text().upper()
-            finnished = 0
-            end_date = self.add_date.text().upper()
-            if name != '' and description != '' and end_date != '':
-                self.base_datos.add_task(name, description, end_date, finnished)
-                self.signal_add.setText('Tasks Added!')
-                self.add_name.clear()
-                self.add_description.clear()
-                self.add_date.clear()
+    # Resize menu Column
+    def mover_menu(self):
+        if True:
+            width = self.frame_control.width()
+            normal = 0
+            if width == 0:
+                extender = 200
             else:
-                self.signal_add.setText("Thereare white spaces!")
+                extender = normal
+            self.animation = QPropertyAnimation(
+                self.frame_control, b'minimumWidth'
+            )
+            self.animation.setDuration(300)
+            self.animation.setStartValue(width)
+            self.animation.setEndValue(extender)
+            self.animation.setEasingCurve(QtCore.QEasingCurve.InOutQuart)
+            self.animation.start()
 
-        def find_by_name_search(self):
-            id_task = self.edit_search.text().upper()
-            id_task = str("'" + id_task + "'")
-            self.task = self.base_datos.search_task(id_task)
-            if len(self.task) != 0:
-                self.Id = self.task[0][0]
-                self.edit_name.setText(self.task[0][1])
-                self.edit_description.setText(self.task[0][2])
-                self.edit_date.setText(self.task[0][3])
+    # Database page
+    def show_tasks(self):
+        datos = self.base_datos.show_tasks()
+        i = len(datos)
+        self.table_tasks.setRowCount(i)
+        tablerow = 0
+        for row in datos:
+            self.Id = row[0]
+            self.table_tasks.setItem(
+                tablerow, 0, QtWidgets.QTableWidgetItem(row[1])
+            )
+            self.table_tasks.setItem(
+                tablerow, 1, QtWidgets.QTableWidgetItem(row[2])
+            )
+            self.table_tasks.setItem(
+                tablerow, 2, QtWidgets.QTableWidgetItem(row[3])
+            )
+            self.table_tasks.setItem(
+                tablerow, 3, QtWidgets.QTableWidgetItem(row[4])
+            )
+            tablerow += 1
+            self.signal_list.setText('')
+            self.signal_delete.setText('')
+            self.signal_edit.setText('')
+            self.signal_add.setText('')
 
-        def edit_task(self):
-            if self.task != '':
-                name = self.edit_name.text().upper()
-                description = self.edit_description.text().upper()
-                end_date = self.edit_date.text().upper()
-                act = self.base_datos.edit_task(self.Id, name, description, end_date)
-                if act == 1:
-                    self.signal_edit.setText('Updated!')
-                    self.edit_name.clear()
-                    self.edit_description.clear()
-                    self.edit_date.clear()
-                    self.edit_search.setText('')
-                elif act == 0:
-                    self.signal_edit.setText('ERROR!')
-                else:
-                    self.signal_edit.setText('WRONG!')
+    def add_task(self):
+        name = self.add_name.text().upper()
+        description = self.add_description.text().upper()
+        finnished = 0
+        end_date = self.add_date.text().upper()
+        if name != '' and description != '' and end_date != '':
+            self.base_datos.add_task(name, description, end_date, finnished)
+            self.signal_add.setText('Tasks Added!')
+            self.add_name.clear()
+            self.add_description.clear()
+            self.add_date.clear()
+        else:
+            self.signal_add.setText('Thereare white spaces!')
 
-        def find_by_name_delete(self):
+    def find_by_name_search(self):
+        id_task = self.edit_search.text().upper()
+        id_task = str("'" + id_task + "'")
+        self.task = self.base_datos.search_task(id_task)
+        if len(self.task) != 0:
+            self.Id = self.task[0][0]
+            self.edit_name.setText(self.task[0][1])
+            self.edit_description.setText(self.task[0][2])
+            self.edit_date.setText(self.task[0][3])
+
+    def edit_task(self):
+        if self.task != '':
+            name = self.edit_name.text().upper()
+            description = self.edit_description.text().upper()
+            end_date = self.edit_date.text().upper()
+            act = self.base_datos.edit_task(
+                self.Id, name, description, end_date
+            )
+            if act == 1:
+                self.signal_edit.setText('Updated!')
+                self.edit_name.clear()
+                self.edit_description.clear()
+                self.edit_date.clear()
+                self.edit_search.setText('')
+            elif act == 0:
+                self.signal_edit.setText('ERROR!')
+            else:
+                self.signal_edit.setText('WRONG!')
+
+    def find_by_name_delete(self):
+        name_product = self.delete_search.text().upper()
+        name_product = str("'" + name_product + "'")
+        product = self.base_datos.search_task(name_product)
+        self.table_delete.setRowCount(len(product))
+
+        if len(product) == 0:
+            self.signal_delete.setText("Doesn't Exist!")
+        else:
+            self.signal_delete.setText('Task selected!')
+        tablerow = 0
+        for row in product:
+            self.task_to_delete = row[2]
+            self.table_delete.setItem(
+                tablerow, 0, QtWidgets.QTableWidgetItem(row[1])
+            )
+            self.table_delete.setItem(
+                tablerow, 1, QtWidgets.QTableWidgetItem(row[2])
+            )
+            self.table_delete.setItem(
+                tablerow, 2, QtWidgets.QTableWidgetItem(row[3])
+            )
+            tablerow += 1
+
+    def delete_task(self):
+        self.row_flag = self.table_delete.currentRow()
+        if self.row_flag == 0:
+            self.table_delete.removeRow(0)
+            self.base_datos.delete_task("'" + self.task_to_delete + "'")
+            self.signal_delete.setText('Task deleted!')
+            self.delete_search.setText('')
+
+
+if __name__ == '__main__':
+    app = QApplication(sys.argv)
+    my_app = VentanaPrincipal()
+    my_app.show()
+    sys.exit(app.exec_())

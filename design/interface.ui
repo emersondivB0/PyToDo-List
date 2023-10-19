@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
+ <author>emersondivB0</author>
  <class>MainWindow</class>
  <widget class="QMainWindow" name="MainWindow">
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>693</width>
+    <width>694</width>
     <height>600</height>
    </rect>
   </property>
@@ -63,7 +64,7 @@ border-radius:20px;
             </property>
             <property name="icon">
              <iconset>
-              <normaloff>../images/menu-icon.png</normaloff>../images/menu-icon.png</iconset>
+              <normaloff>../../../../../../home/emerson/.designer/images/menu-icon.png</normaloff>../../../../../../home/emerson/.designer/images/menu-icon.png</iconset>
             </property>
             <property name="iconSize">
              <size>
@@ -99,7 +100,7 @@ border-radius:20px;
             </property>
             <property name="icon">
              <iconset>
-              <normaloff>../images/contact-icon.png</normaloff>../images/contact-icon.png</iconset>
+              <normaloff>../../../../../../home/emerson/.designer/images/contact-icon.png</normaloff>../../../../../../home/emerson/.designer/images/contact-icon.png</iconset>
             </property>
             <property name="iconSize">
              <size>
@@ -184,7 +185,7 @@ font:77 10pt &quot;Arial Black&quot;;
                </property>
                <property name="icon">
                 <iconset>
-                 <normaloff>../images/add-icon.png</normaloff>../images/add-icon.png</iconset>
+                 <normaloff>../../../../../../home/emerson/.designer/images/add-icon.png</normaloff>../../../../../../home/emerson/.designer/images/add-icon.png</iconset>
                </property>
                <property name="iconSize">
                 <size>
@@ -207,7 +208,7 @@ font:77 10pt &quot;Arial Black&quot;;
                </property>
                <property name="icon">
                 <iconset>
-                 <normaloff>../images/list-icon.png</normaloff>../images/list-icon.png</iconset>
+                 <normaloff>../../../../../../home/emerson/.designer/images/list-icon.png</normaloff>../../../../../../home/emerson/.designer/images/list-icon.png</iconset>
                </property>
                <property name="iconSize">
                 <size>
@@ -230,7 +231,7 @@ font:77 10pt &quot;Arial Black&quot;;
                </property>
                <property name="icon">
                 <iconset>
-                 <normaloff>../images/delete-icon.png</normaloff>../images/delete-icon.png</iconset>
+                 <normaloff>../../../../../../home/emerson/.designer/images/delete-icon.png</normaloff>../../../../../../home/emerson/.designer/images/delete-icon.png</iconset>
                </property>
                <property name="iconSize">
                 <size>
@@ -253,7 +254,7 @@ font:77 10pt &quot;Arial Black&quot;;
                </property>
                <property name="icon">
                 <iconset>
-                 <normaloff>../images/edit-logo.png</normaloff>../images/edit-logo.png</iconset>
+                 <normaloff>../../../../../../home/emerson/.designer/images/edit-logo.png</normaloff>../../../../../../home/emerson/.designer/images/edit-logo.png</iconset>
                </property>
                <property name="iconSize">
                 <size>
@@ -276,7 +277,7 @@ font:77 10pt &quot;Arial Black&quot;;
                </property>
                <property name="icon">
                 <iconset>
-                 <normaloff>../images/settings-icon.png</normaloff>../images/settings-icon.png</iconset>
+                 <normaloff>../../../../../../home/emerson/.designer/images/settings-icon.png</normaloff>../../../../../../home/emerson/.designer/images/settings-icon.png</iconset>
                </property>
                <property name="iconSize">
                 <size>
@@ -355,8 +356,14 @@ color: #000000;
              </property>
              <item>
               <widget class="QStackedWidget" name="stackedWidget">
+               <property name="minimumSize">
+                <size>
+                 <width>200</width>
+                 <height>30</height>
+                </size>
+               </property>
                <property name="currentIndex">
-                <number>4</number>
+                <number>1</number>
                </property>
                <widget class="QWidget" name="page_add">
                 <layout class="QVBoxLayout" name="verticalLayout_7">
@@ -582,6 +589,19 @@ color: #000000;
                  <item>
                   <layout class="QHBoxLayout" name="horizontalLayout_4">
                    <item>
+                    <widget class="QLabel" name="signal_list">
+                     <property name="minimumSize">
+                      <size>
+                       <width>200</width>
+                       <height>30</height>
+                      </size>
+                     </property>
+                     <property name="text">
+                      <string/>
+                     </property>
+                    </widget>
+                   </item>
+                   <item>
                     <spacer name="horizontalSpacer_2">
                      <property name="orientation">
                       <enum>Qt::Horizontal</enum>
@@ -652,6 +672,11 @@ color: #000000;
                  </item>
                  <item>
                   <widget class="QTableWidget" name="table_delete">
+                   <property name="font">
+                    <font>
+                     <pointsize>12</pointsize>
+                    </font>
+                   </property>
                    <column>
                     <property name="text">
                      <string>#</string>
@@ -958,4 +983,21 @@ color: #000000;
  </widget>
  <resources/>
  <connections/>
+ <designerdata>
+  <property name="gridDeltaX">
+   <number>10</number>
+  </property>
+  <property name="gridDeltaY">
+   <number>10</number>
+  </property>
+  <property name="gridSnapX">
+   <bool>true</bool>
+  </property>
+  <property name="gridSnapY">
+   <bool>true</bool>
+  </property>
+  <property name="gridVisible">
+   <bool>false</bool>
+  </property>
+ </designerdata>
 </ui>
