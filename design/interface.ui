@@ -64,7 +64,7 @@ border-radius:20px;
             </property>
             <property name="icon">
              <iconset>
-              <normaloff>../../../../../../home/emerson/.designer/images/menu-icon.png</normaloff>../../../../../../home/emerson/.designer/images/menu-icon.png</iconset>
+              <normaloff>../images/menu-icon.png</normaloff>../images/menu-icon.png</iconset>
             </property>
             <property name="iconSize">
              <size>
@@ -100,7 +100,7 @@ border-radius:20px;
             </property>
             <property name="icon">
              <iconset>
-              <normaloff>../../../../../../home/emerson/.designer/images/contact-icon.png</normaloff>../../../../../../home/emerson/.designer/images/contact-icon.png</iconset>
+              <normaloff>../images/contact-icon.png</normaloff>../images/contact-icon.png</iconset>
             </property>
             <property name="iconSize">
              <size>
@@ -363,7 +363,7 @@ color: #000000;
                 </size>
                </property>
                <property name="currentIndex">
-                <number>2</number>
+                <number>0</number>
                </property>
                <widget class="QWidget" name="page_add">
                 <layout class="QVBoxLayout" name="verticalLayout_7">

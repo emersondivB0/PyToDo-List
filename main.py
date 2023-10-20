@@ -147,8 +147,9 @@ class VentanaPrincipal(QMainWindow):
             name = self.edit_name.text().upper()
             description = self.edit_description.text().upper()
             end_date = self.edit_date.text().upper()
+            finished = 0
             act = self.base_datos.edit_task(
-                self.Id, name, description, end_date
+                self.Id, name, description, end_date, finished
             )
             if act == 1:
                 self.signal_edit.setText('Updated!')
@@ -173,7 +174,7 @@ class VentanaPrincipal(QMainWindow):
             self.signal_delete.setText('Task selected!')
         tablerow = 0
         for row in product:
-            self.task_to_delete = row[2]
+            self.task_to_delete = row[1]
             self.table_delete.setItem(
                 tablerow, 0, QtWidgets.QTableWidgetItem(row[1])
             )

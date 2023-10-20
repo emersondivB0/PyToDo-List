@@ -65,7 +65,7 @@ class Communication:
 
     def edit_task(self, Id, name, description, end_date, finished):
         cursor = self.connection.cursor()
-        query = """UPDATE tasks SET NOMBRE = '{}', DESCRIPTION = '{}', END_DATE = '{}', FINISHED = '{}' WHERE ID = '{}' """.format(
+        query = """UPDATE tasks SET NAME = '{}', DESCRIPTION = '{}', END_DATE = '{}', FINISHED = '{}' WHERE ID = '{}' """.format(
             name, description, end_date, finished, Id
         )
         cursor.execute(query)
