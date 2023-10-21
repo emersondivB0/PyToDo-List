@@ -14,6 +14,8 @@ class VentanaPrincipal(QMainWindow):
     def __init__(self):
         super(VentanaPrincipal, self).__init__()
         loadUi('design/interface.ui', self)
+        # Initialize in page 1
+        self.stackedWidget.setCurrentIndex(1)
 
         self.bt_menu.clicked.connect(self.mover_menu)
         # class communication sqlite
@@ -21,6 +23,7 @@ class VentanaPrincipal(QMainWindow):
 
         # Hide buttons
         self.bt_show_main.clicked.connect(self.show_tasks)
+        self.bt_refresh.clicked.connect(self.show_tasks)
         self.bt_add.clicked.connect(self.add_task)
         self.bt_delete.clicked.connect(self.delete_task)
         self.bt_edit.clicked.connect(self.edit_task)
@@ -108,10 +111,7 @@ class VentanaPrincipal(QMainWindow):
             )
             self.table_tasks.setItem(
                 tablerow, 2, QtWidgets.QTableWidgetItem(row[3])
-            )
-            self.table_tasks.setItem(
-                tablerow, 3, QtWidgets.QTableWidgetItem(row[4])
-            )
+            ) 
             tablerow += 1
             self.signal_list.setText('')
             self.signal_delete.setText('')
@@ -147,9 +147,8 @@ class VentanaPrincipal(QMainWindow):
             name = self.edit_name.text().upper()
             description = self.edit_description.text().upper()
             end_date = self.edit_date.text().upper()
-            finished = 0
             act = self.base_datos.edit_task(
-                self.Id, name, description, end_date, finished
+                self.Id, name, description, end_date
             )
             if act == 1:
                 self.signal_edit.setText('Updated!')
