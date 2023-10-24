@@ -12,6 +12,13 @@ This is a To Do List written in Python with PyQt5. The application allows you to
 
 **Installation**
 
+**Screenshots**
+
+![](images/ss/add.png)
+![](images/ss/show.png)
+![](images/ss/delete.png)
+![](images/ss/edit.png)
+
 **Contributing**
 
 Contributions welcome. Please follow instructions in the `CONTRIBUTING.md` file.

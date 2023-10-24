@@ -129,7 +129,7 @@ border-radius:20px;
          </property>
          <property name="styleSheet">
           <string notr="true">QPushButton {
-background-color: rgb(61,61,61);
+background-color: #080808;
 border-top-left-radius:20px;
 border-bottom-left-radius:20px;
 color: rgb(255,255,255);
@@ -320,7 +320,7 @@ font: 75 12pt &quot;Times New Roman&quot;;
 }
 
 QPushButton {
-background-color: rgb(61,61,61);
+background-color: #080808;
 border-radius: 15px;
 color: rgb(255,255,255);
 font: 77 10pt &quot;Arial Black&quot;;
